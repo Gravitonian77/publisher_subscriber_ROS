@@ -8,7 +8,7 @@ public:
   : Node("listener_node")
   {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "chatter", 10, std::bind(&ListenerNode::topic_callback, this, std::placeholders::_1));
+      "Buffer", 10, std::bind(&ListenerNode::topic_callback, this, std::placeholders::_1));
   }
 
 private:
