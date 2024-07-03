@@ -11,6 +11,18 @@ find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
 
+add_executable(listener_node src/listener_node.cpp)
+ament_target_dependencies(listener_node rclcpp std_msgs)
+
+install(TARGETS
+  listener_node
+  DESTINATION lib/${PROJECT_NAME})
+
+# Install Python scripts
+install(PROGRAMS
+  src/talker_node.py
+  DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
